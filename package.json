@@ -1,0 +1,25 @@
+{
+  "name": "zadanie_17_7",
+  "version": "1.0.0",
+  "description": "Uwierzytelnianie aplikacji za pomocą Google",
+  "main": "config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomasz-konecki/zadanie_17_7.git"
+  },
+  "author": "TK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomasz-konecki/zadanie_17_7/issues"
+  },
+  "homepage": "https://github.com/tomasz-konecki/zadanie_17_7#readme",
+  "dependencies": {
+    "express": "^4.16.1",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0"
+  }
+}
