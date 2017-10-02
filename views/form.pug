@@ -1,8 +1,8 @@
 form(action='http://localhost:3000/auth/google', method='POST')
   p
-    | Nazwa użytkownika:
-    input.text(type='text', name='user_name')
+    | Użytkownik:
+    input.user(type='text', name='user_name')
   p
     | Hasło:
-    input.text(type='text', name='password')
+    input.password(type='text', name='password')
   input.button(type='submit', value='Submit')
