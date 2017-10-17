@@ -1,60 +1,18 @@
 const express = require('express'),
-    passport = require('passport'),
-    GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
-    config = require('./config'),
-    app = express(),
-    googleProfile = {};
+    authRoutes = require('./routes/auth-routes'),
+    passportSetup = require('./config/passport-setup'),
+    app = express();
 
-passport.serializeUser((user, done) => {
-    done(null, user);
-});
-passport.deserializeUser((obj, done)  => {
-    done(null, obj);
-});
-
-passport.use(
-    new GoogleStrategy({
-        clientID: config.GOOGLE_CLIENT_ID,
-        clientSecret:config.GOOGLE_CLIENT_SECRET,
-        callbackURL: config.CALLBACK_URL
-    },
-    (accessToken, refreshToken, profile, cb) => {
-        googleProfile = {
-            id: profile.id,
-            displayName: profile.displayName
-        };
-        cb(null, profile);
-    }
-));
-
+//set up view engine
 app.set('view engine', 'pug');
-app.set('views', './views');
-app.use(passport.initialize());
-app.use(passport.session());
 
-//app routes
+//set up routes
+app.use('/auth', authRoutes);
+
 app.get('/', (req, res) => {
-    res.render('index', {
-        user: req.user
-    });
+    res.render('index');
 });
 
-app.get('/logged', (req, res) => {
-    res.render('logged', {
-        user: googleProfile
-    });
+app.listen(8000, () => {
+    console.log('listening on port 8000');
 });
-
-//Passport routes
-app.get('/auth/google',
-    passport.authenticate('google', {
-        scope: ['profile', 'email']
-    }));
-
-app.get('/auth/google/callback',
-    passport.authenticate('google', {
-        successRedirect: '/logged',
-        failureRedirect: '/'
-    }));
-
-app.listen(3000);
