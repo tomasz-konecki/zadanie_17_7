@@ -1,9 +1,17 @@
 html
     head
-        title Uwierzytelnianie
+        title OAuth Google
     <style type="text/css">
         include ../css/style.css
     </style>
+
     body
-        h3 Strona logowania
-        include ./form.pug
+      nav
+        ul
+          li
+            a(href='/auth/google') Login with Google
+          li
+            a(href='/auth/logout') Logout
+      header
+        h1 OAuth Testing
+        h2 Homepage
