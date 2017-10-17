@@ -12,7 +12,8 @@ passport.deserializeUser((obj, done)  => {
     done(null, obj);
 });
 
-passport.use(new GoogleStrategy({
+passport.use(
+    new GoogleStrategy({
         clientID: config.GOOGLE_CLIENT_ID,
         clientSecret:config.GOOGLE_CLIENT_SECRET,
         callbackURL: config.CALLBACK_URL
