@@ -5,10 +5,10 @@ const express = require('express'),
     port = 3000;
     app = express();
 
+
 app.set('view engine', 'pug');
 
 app.use('/auth', authRoutes);
-
 app.use(passport.initialize());
 app.use(passport.session());
 
